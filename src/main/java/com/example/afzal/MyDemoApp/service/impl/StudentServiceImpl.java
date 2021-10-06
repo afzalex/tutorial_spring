@@ -11,6 +11,7 @@ package com.example.afzal.MyDemoApp.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +40,7 @@ public class StudentServiceImpl implements StudentService {
 	public StudentModel createStudent(StudentModel studentModel) {
 		log.info("Request to create student object : {}", studentModel);
 		StudentEntity studentEntity = new StudentEntity(); // transient object
-		studentEntity.setName(studentModel.getName());
-		studentEntity.setAddress(studentModel.getAddress());
+		BeanUtils.copyProperties(studentModel, studentEntity); // Or use ModelMapper
 		StudentEntity createdStudent = studentRepository.save(studentEntity); // now persistent object
 		studentModel.setId(createdStudent.getId());
 		return studentModel;
