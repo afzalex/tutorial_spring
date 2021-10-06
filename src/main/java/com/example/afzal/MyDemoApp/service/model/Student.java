@@ -25,4 +25,6 @@ public class Student {
 	private final String name;
 	private final String address;
 
+	private String source;
+
 }
