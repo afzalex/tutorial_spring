@@ -11,8 +11,10 @@ package com.example.afzal.MyDemoApp.service;
 
 import java.util.List;
 
+import com.example.afzal.MyDemoApp.service.model.Student;
+
 public interface StudentService {
 
-	List<String> listStudents(String startsWith);
+	List<Student> listStudents(String startsWith);
 
 }

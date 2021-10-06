@@ -9,16 +9,17 @@
 
 package com.example.afzal.MyDemoApp.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.afzal.MyDemoApp.service.StudentService;
+import com.example.afzal.MyDemoApp.service.model.Student;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,12 +33,13 @@ public class StudentController {
 	private final StudentService studentService;
 
 	@GetMapping("/list")
-	public List<String> getStudentList(@RequestParam(value = "startsWith", required = false) String startsWith) {
+	public ResponseEntity<List<Student>> getStudentList(
+			@RequestParam(value = "startsWith", required = false) String startsWith) {
 		try {
-			return studentService.listStudents(startsWith);
+			return ResponseEntity.ok(studentService.listStudents(startsWith));
 		} catch (RuntimeException re) {
 			log.error("Some Error occurred : {}", re);
-			return Arrays.asList("Not found");
+			return ResponseEntity.badRequest().build();
 		}
 	}
 }

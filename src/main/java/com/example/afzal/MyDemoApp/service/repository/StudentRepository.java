@@ -14,9 +14,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.afzal.MyDemoApp.service.model.Student;
+
 @Component
 public class StudentRepository {
-	public List<String> findAll() {
-		return Arrays.asList("Afzal", "Shabaz");
+	public List<Student> findAll() {
+		List<Student> studentList = Arrays.asList(//
+				Student.builder().name("Afzal").address("afzal address").build(), //
+				Student.builder().name("Shabaz").address("shabaz address").build()//
+		);
+		return studentList;
 	}
 }
