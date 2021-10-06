@@ -17,4 +17,6 @@ public interface StudentService {
 
 	List<Student> listStudents(String startsWith);
 
+	Student createStudent(Student studentObj);
+
 }

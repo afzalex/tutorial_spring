@@ -33,4 +33,11 @@ public class StudentServiceImpl implements StudentService {
 		log.info("Received request in service layer with param {}", startsWith);
 		return studentRepository.findAll();
 	}
+
+	@Override
+	public Student createStudent(Student studentObj) {
+		log.info("Request to create student object : {}", studentObj);
+		Student createdStudent = studentRepository.save(studentObj);
+		return createdStudent;
+	}
 }
