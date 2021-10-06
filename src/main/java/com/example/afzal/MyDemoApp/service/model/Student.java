@@ -11,8 +11,6 @@ package com.example.afzal.MyDemoApp.service.model;
 
 import java.util.UUID;
 
-import com.example.afzal.MyDemoApp.service.model.Student.StudentBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,35 +24,5 @@ public class Student {
 
 	private final String name;
 	private final String address;
-
-	public static StudentBuilder builder() {
-		StudentBuilder sb = new StudentBuilder();
-		return sb;
-	}
-
-	public static class StudentBuilder {
-
-		private String name;
-		private String address;
-
-		private StudentBuilder() {
-		}
-
-		public StudentBuilder name(String name) {
-			this.name = name;
-			return this;
-		}
-
-		public StudentBuilder address(String address) {
-			this.address = address;
-			return this;
-		}
-
-		public Student build() {
-			Student s = new Student(name, address);
-			return s;
-		}
-
-	}
 
 }
