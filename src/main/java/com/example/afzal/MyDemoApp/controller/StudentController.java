@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.afzal.MyDemoApp.service.StudentService;
-import com.example.afzal.MyDemoApp.service.entity.Student;
+import com.example.afzal.MyDemoApp.service.entity.StudentEntity;
 import com.example.afzal.MyDemoApp.service.model.StudentModel;
 
 import lombok.RequiredArgsConstructor;
@@ -36,7 +37,7 @@ public class StudentController {
 	private final StudentService studentService;
 
 	@GetMapping("/list")
-	public ResponseEntity<List<Student>> getStudentList(
+	public ResponseEntity<List<StudentEntity>> getStudentList(
 			@RequestParam(value = "startsWith", required = false) String startsWith) {
 		try {
 			return ResponseEntity.ok(studentService.listStudents(startsWith));
@@ -45,9 +46,9 @@ public class StudentController {
 			return ResponseEntity.badRequest().build();
 		}
 	}
-	
+
 	@PostMapping("/create")
-	public ResponseEntity<StudentModel> createStudent(@RequestBody StudentModel studentObj) {
+	public ResponseEntity<StudentModel> createStudent(@Validated @RequestBody StudentModel studentObj) {
 		try {
 			return ResponseEntity.ok(studentService.createStudent(studentObj));
 		} catch (RuntimeException re) {

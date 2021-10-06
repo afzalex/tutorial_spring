@@ -9,6 +9,9 @@
 
 package com.example.afzal.MyDemoApp.service.model;
 
+
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +25,9 @@ public class StudentModel {
 
 	private String id ;
 
+	@NotNull
 	private String name;
+	
 	private String address;
 
 }

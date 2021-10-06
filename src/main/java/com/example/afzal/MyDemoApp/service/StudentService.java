@@ -11,12 +11,12 @@ package com.example.afzal.MyDemoApp.service;
 
 import java.util.List;
 
-import com.example.afzal.MyDemoApp.service.entity.Student;
+import com.example.afzal.MyDemoApp.service.entity.StudentEntity;
 import com.example.afzal.MyDemoApp.service.model.StudentModel;
 
 public interface StudentService {
 
-	List<Student> listStudents(String startsWith);
+	List<StudentEntity> listStudents(String startsWith);
 
 	StudentModel createStudent(StudentModel studentObj);
 

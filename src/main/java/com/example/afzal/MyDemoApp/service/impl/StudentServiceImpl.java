@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.afzal.MyDemoApp.repository.StudentRepository;
 import com.example.afzal.MyDemoApp.service.StudentService;
-import com.example.afzal.MyDemoApp.service.entity.Student;
+import com.example.afzal.MyDemoApp.service.entity.StudentEntity;
 import com.example.afzal.MyDemoApp.service.model.StudentModel;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
 	private final StudentRepository studentRepository;
 
 	@Override
-	public List<Student> listStudents(String startsWith) {
+	public List<StudentEntity> listStudents(String startsWith) {
 		log.info("Received request in service layer with param {}", startsWith);
 		return studentRepository.findAll();
 	}
@@ -38,10 +38,10 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public StudentModel createStudent(StudentModel studentModel) {
 		log.info("Request to create student object : {}", studentModel);
-		Student studentEntity = new Student(); // transient object
+		StudentEntity studentEntity = new StudentEntity(); // transient object
 		studentEntity.setName(studentModel.getName());
 		studentEntity.setAddress(studentModel.getAddress());
-		Student createdStudent = studentRepository.save(studentEntity); // now persistent object
+		StudentEntity createdStudent = studentRepository.save(studentEntity); // now persistent object
 		studentModel.setId(createdStudent.getId());
 		return studentModel;
 	}

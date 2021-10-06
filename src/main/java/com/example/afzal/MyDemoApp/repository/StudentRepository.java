@@ -11,8 +11,8 @@ package com.example.afzal.MyDemoApp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.afzal.MyDemoApp.service.entity.Student;
+import com.example.afzal.MyDemoApp.service.entity.StudentEntity;
 
-public interface StudentRepository extends JpaRepository<Student, String>  {
+public interface StudentRepository extends JpaRepository<StudentEntity, String>  {
 
 }

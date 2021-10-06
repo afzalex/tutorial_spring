@@ -22,7 +22,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="student")
-public class Student {
+public class StudentEntity {
 	
 	@Id
 	@GeneratedValue(generator = "uuid")
