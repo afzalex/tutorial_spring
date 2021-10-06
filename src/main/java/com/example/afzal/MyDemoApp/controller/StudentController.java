@@ -31,14 +31,13 @@ import lombok.extern.slf4j.Slf4j;
 public class StudentController {
 
 	@Autowired
-	@Qualifier("two")
-	private StudentService studentService;
+	private StudentService studentServiceImpl1;
 
 	@GetMapping("/list")
 	public ResponseEntity<List<Student>> getStudentList(
 			@RequestParam(value = "startsWith", required = false) String startsWith) {
 		try {
-			return ResponseEntity.ok(studentService.listStudents(startsWith));
+			return ResponseEntity.ok(studentServiceImpl1.listStudents(startsWith));
 		} catch (RuntimeException re) {
 			log.error("Some Error occurred : {}", re);
 			return ResponseEntity.badRequest().build();
