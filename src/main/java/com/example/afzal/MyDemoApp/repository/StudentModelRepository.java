@@ -7,21 +7,21 @@
  * entered into with Altimetrik.
  ******************************************************************************/
 
-package com.example.afzal.MyDemoApp.service.repository;
+package com.example.afzal.MyDemoApp.repository;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.afzal.MyDemoApp.service.model.Student;
+import com.example.afzal.MyDemoApp.service.model.StudentModel;
 
 @Component
-public class StudentRepository {
-	public List<Student> findAll() {
-		List<Student> studentList = Arrays.asList(//
-				Student.builder().name("Afzal").address("afzal address").build(), //
-				Student.builder().name("Shabaz").address("shabaz address").build()//
+public class StudentModelRepository {
+	public List<StudentModel> findAll() {
+		List<StudentModel> studentList = Arrays.asList(//
+				StudentModel.builder().name("Afzal").address("afzal address").build(), //
+				StudentModel.builder().name("Shabaz").address("shabaz address").build()//
 		);
 		return studentList;
 	}

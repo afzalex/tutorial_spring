@@ -7,24 +7,12 @@
  * entered into with Altimetrik.
  ******************************************************************************/
 
-package com.example.afzal.MyDemoApp.service.model;
+package com.example.afzal.MyDemoApp.repository;
 
-import java.util.UUID;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import com.example.afzal.MyDemoApp.service.entity.Student;
 
-@Data
-@Builder
-@AllArgsConstructor
-public class Student {
-
-	private final String id = UUID.randomUUID().toString();
-
-	private final String name;
-	private final String address;
-
-	private String source;
+public interface StudentRepository extends JpaRepository<Student, String>  {
 
 }

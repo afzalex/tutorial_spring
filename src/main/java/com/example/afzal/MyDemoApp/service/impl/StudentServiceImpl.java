@@ -10,14 +10,13 @@
 package com.example.afzal.MyDemoApp.service.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.afzal.MyDemoApp.repository.StudentRepository;
 import com.example.afzal.MyDemoApp.service.StudentService;
-import com.example.afzal.MyDemoApp.service.model.Student;
-import com.example.afzal.MyDemoApp.service.repository.StudentRepository;
+import com.example.afzal.MyDemoApp.service.entity.Student;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,17 +24,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor(onConstructor_ = { @Autowired })
 @Service
-public class StudentServiceImpl1 implements StudentService {
+public class StudentServiceImpl implements StudentService {
 
 	private final StudentRepository studentRepository;
 
 	@Override
 	public List<Student> listStudents(String startsWith) {
 		log.info("Received request in service layer with param {}", startsWith);
-		List<Student> studentList = studentRepository.findAll().stream().map(s -> {
-			s.setSource(this.getClass().toString());
-			return s;
-		}).collect(Collectors.toList());
-		return studentList;
+		return studentRepository.findAll();
 	}
 }

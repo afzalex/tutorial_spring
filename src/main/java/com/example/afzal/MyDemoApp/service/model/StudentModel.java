@@ -7,14 +7,24 @@
  * entered into with Altimetrik.
  ******************************************************************************/
 
-package com.example.afzal.MyDemoApp.service;
+package com.example.afzal.MyDemoApp.service.model;
 
-import java.util.List;
+import java.util.UUID;
 
-import com.example.afzal.MyDemoApp.service.entity.Student;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
-public interface StudentService {
+@Data
+@Builder
+@AllArgsConstructor
+public class StudentModel {
 
-	List<Student> listStudents(String startsWith);
+	private final String id = UUID.randomUUID().toString();
+
+	private final String name;
+	private final String address;
+
+	private String source;
 
 }
