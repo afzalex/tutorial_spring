@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.example.afzal.MyDemoApp.repository.StudentRepository;
 import com.example.afzal.MyDemoApp.service.StudentService;
 import com.example.afzal.MyDemoApp.service.entity.Student;
+import com.example.afzal.MyDemoApp.service.model.StudentModel;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,9 +36,13 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student createStudent(Student studentObj) {
-		log.info("Request to create student object : {}", studentObj);
-		Student createdStudent = studentRepository.save(studentObj);
-		return createdStudent;
+	public StudentModel createStudent(StudentModel studentModel) {
+		log.info("Request to create student object : {}", studentModel);
+		Student studentEntity = new Student(); // transient object
+		studentEntity.setName(studentModel.getName());
+		studentEntity.setAddress(studentModel.getAddress());
+		Student createdStudent = studentRepository.save(studentEntity); // now persistent object
+		studentModel.setId(createdStudent.getId());
+		return studentModel;
 	}
 }

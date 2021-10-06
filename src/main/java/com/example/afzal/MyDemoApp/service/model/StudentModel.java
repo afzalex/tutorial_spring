@@ -9,22 +9,20 @@
 
 package com.example.afzal.MyDemoApp.service.model;
 
-import java.util.UUID;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class StudentModel {
 
-	private final String id = UUID.randomUUID().toString();
+	private String id ;
 
-	private final String name;
-	private final String address;
-
-	private String source;
+	private String name;
+	private String address;
 
 }

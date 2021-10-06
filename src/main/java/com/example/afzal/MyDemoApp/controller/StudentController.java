@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.afzal.MyDemoApp.service.StudentService;
 import com.example.afzal.MyDemoApp.service.entity.Student;
+import com.example.afzal.MyDemoApp.service.model.StudentModel;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class StudentController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<Student> createStudent(@RequestBody Student studentObj) {
+	public ResponseEntity<StudentModel> createStudent(@RequestBody StudentModel studentObj) {
 		try {
 			return ResponseEntity.ok(studentService.createStudent(studentObj));
 		} catch (RuntimeException re) {
