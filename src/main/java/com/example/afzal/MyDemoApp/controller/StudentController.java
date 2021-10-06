@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.afzal.MyDemoApp.exception.OperationUnderDevelopmentException;
 import com.example.afzal.MyDemoApp.service.StudentService;
 import com.example.afzal.MyDemoApp.service.entity.StudentEntity;
 import com.example.afzal.MyDemoApp.service.model.StudentModel;
@@ -46,6 +47,11 @@ public class StudentController {
 			return ResponseEntity.badRequest().build();
 		}
 	}
+	
+	@GetMapping("/get")
+	public ResponseEntity<StudentModel> getStudentById() throws OperationUnderDevelopmentException {
+		throw new OperationUnderDevelopmentException();
+	}
 
 	@PostMapping("/create")
 	public ResponseEntity<StudentModel> createStudent(@Validated @RequestBody StudentModel studentObj) {
@@ -56,4 +62,6 @@ public class StudentController {
 			return ResponseEntity.badRequest().build();
 		}
 	}
+	
+	
 }
